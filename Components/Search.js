@@ -62,8 +62,12 @@ _displayLoading(){
   }
 }
 
+_displayDetailForFilm = (idFilm) => {
+  
+  this.props.navigation.navigate("FilmDetail",{idFilm : idFilm})
+}
+
   render() {
- console.log(this.state.isLoading)
     return (
       <View style={styles.main_container}>
         <TextInput style={styles.textinput} placeholder='Titre du film' onChangeText={(text) => this._searchTextInputChanged(text)} onSubmitEditing = {() => this._searchFilms()}/>
@@ -71,7 +75,7 @@ _displayLoading(){
         <FlatList
           data = {this.state.films}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <FilmItem film={item}/>}
+          renderItem={({item}) => <FilmItem film={item} displayDetailForFilm = {this._displayDetailForFilm}/>}
           onEndReachedThreshold={0.5}
           onEndReached={() => {
           if (this.page < this.totalPages){
@@ -88,7 +92,6 @@ _displayLoading(){
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    marginTop: 20
   },
   textinput: {
     marginLeft: 5,
@@ -108,5 +111,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
 
 export default Search
