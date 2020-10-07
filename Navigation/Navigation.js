@@ -2,12 +2,12 @@ import 'react-native-gesture-handler';
 import {createAppContainer } from 'react-navigation'
 import { createStackNavigator} from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-// import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Search from '../Components/Search'
 import FilmDetail from '../Components/FilmDetail'
 import Favorites from '../Components/Favorites'
 import { StyleSheet, Image } from 'react-native'
 import React from 'react'
+import Test from '../Components/Test'
 
 const SearchStackNavigatior = createStackNavigator({
   Search: {
@@ -53,6 +53,9 @@ const MovieTabNavigator = createBottomTabNavigator({
         style={styles.icon}/>
       }
     }
+  },
+  Test: {
+    screen : Test
   }
 },
   {
